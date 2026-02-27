@@ -7,7 +7,7 @@ This is just simple backtraking on what I have build and done with my Pi5
 ## Purpose
 To learn and experiment in enviroment that has been designed and build from scratech by me 
 
-================================================================================================
+============================================================================================
 
 As of 27/02/26
 
