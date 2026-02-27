@@ -2,7 +2,8 @@
 Self-hosted Raspberry Pi 5 homelab
 
 ##Overview
-This is just simple backtraking on what I have build and done with my Pi5
+
+This is just simple backtracking on what I have build and done with my Pi5
 
 ## Purpose
 To learn and experiment in enviroment that has been designed and build from scratech by me 
