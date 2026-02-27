@@ -18,7 +18,7 @@ As of 27/02/26
 ## Core System
 - Raspberry Pi 5 Model B (16GB RAM)
 - 52Pi Ultra Thin ICE Tower Cooler
-  
+
 ## Primary Storage (Boot Drive)
 - Kingston 500GB NVMe SSD  
   - Connected via Geekworm X1001 PCIe to M.2 adapter  
@@ -53,41 +53,31 @@ As of 27/02/26
 
 ## Containerized Services (Docker)
 ## Nextcloud Stack
-- Nextcloud Application (nextcloud:29-apache)
-- MariaDB Database (mariadb:11.4)
-- Redis Cache (redis:7-alpine)
-- Nginx Reverse Proxy (nginx:alpine)
-- ClamAV Scanner (mkodockx/docker-clamav)
+- Nextcloud (which is using  MariaDB, Redis Cache, Nginx Reverse Proxy)
+- ClamAV Scanner 
 ## Monitoring Stack
-- Prometheus (prom/prometheus)
-- Node Exporter (prom/node-exporter)
-- Grafana (grafana/grafana-oss)
-- Grafana Image Renderer (grafana/grafana-image-renderer)
+- Prometheus (that Collects and stores system metircs)
+- Node Exporter (Exposes system metrics from the host in readable format)
+- Grafana (Dashboard UI to visualize metrics. It queries Prometheus and turns data into
+    charts, alerts, and dashboards)
+- Grafana Image Renderer (Renders Grafana panels/dashboards to images (for reports, alerts, sharing)
 
 ## Host-Level Services
 ## Container Runtime
-- Docker Engine (docker.io)
-- Docker Compose
+- Docker Engine, Docker Compose
 ## Remote Access & Network
-- SSH Server
-- ZeroTier VPN
+- ZeroTier VPN (Private virtual network so I can ssh in from any of my devices)
 ## Security & Protection
-- Fail2Ban
-- ClamAV mirror tooling (clamav-cvdupdate)
+- Fail2Ban (Blocks IPs that repeatedly fail logins ( to prevent SSH brute force)
 ## Backup & Recovery
-- Restic
-- restic-backup.service
-- Rsync
+- Restic (Automated Daily backups (snapshots) that goes to local storage (240gb Kingston Sata ssd))
 ## Monitoring & Health
-- SMART disk monitoring (smartmontools)
-- pi-monitor.service
-- rp2350-stats.service
+- SMART disk monitoring (Tracks disk health and alerts on
+    issues)
+- pi-monitor.service (Custom checks for Pi health/status)
+- rp2350-stats.service (Sends system stats to your RP2350 LCD dashboard)
 ## Power Management
-- x120x-ups notification and shutdown services
+- x120x-ups-notify.service (Emails alerts when UPS switches to battery)
+- x120x-ups-shutdown.service (Safely shuts down when UPS battery is low)
 ## Alerting
-- msmtp / msmtp-mta
-- bsd-mailx
-- rp2350-stats.service — Sends Raspberry Pi system statistics to RP2350 LCD dashboard.
-## Power Management (UPS Integration)
-- x120x-ups-notify.service — Sends email alerts on UPS power loss.
-- x120x-ups-shutdown.service — Safely shuts down system when UPS battery is low.
+- msmtp / msmtp-mta (Lightweight mail sender used by alert scripts)
