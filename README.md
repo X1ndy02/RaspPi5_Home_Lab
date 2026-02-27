@@ -44,8 +44,8 @@ As of 27/02/26
     - RAM usage
     - Temperature
     - UPS battery status
-    - Network latency (ping)
-    - Thermal throttling state
+    - Ping
+    - Throttling state
       
 ======================================================================================
 ======================================================================================
