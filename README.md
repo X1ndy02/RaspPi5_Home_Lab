@@ -79,5 +79,55 @@ As of 27/02/26
 ## Power Management
 - x120x-ups-notify.service (Emails alerts when UPS switches to battery)
 - x120x-ups-shutdown.service (Safely shuts down when UPS battery is low)
+
 ## Alerting
 - msmtp / msmtp-mta (Lightweight mail sender used by alert scripts)
+
+======================================================================================
+======================================================================================
+
+# Reporting & Monitoring via smtp 
+
+Alerts are triggered on state changes and include:
+
+- Nextcloud HTTPS availability
+- SSH service status
+- Ping
+- CPU temperature
+- System load average
+- RAM and swap usage
+- Disk usage
+- Docker container exits
+- Power throttling flags
+- SMART disk health
+- Failed SSH login attempts
+- Filesystem errors
+- SSL certificate expiration
+
+## Restic Backup Reports  
+
+Status emails include:
+- SUCCESS
+- FAILED
+- WARNING (disk usage ≥ 80%)
+
+Reports include:
+- Full backup log (attachment)
+- Summary report
+- Warning events (if any)
+
+## UPS Notifications  
+Events monitored:
+
+- Power loss (AC disconnected)
+- Power restoration (AC restored)
+- Low-battery shutdown events
+- Monthly UPS battery health report
+
+## Fail2Ban Ban Notifications  
+Ban alerts for:
+- sshd (Watches SSH login attempts. Bans IPs with repeated failed logins)
+- nextcloud (Watches Nextcloud logs for failed logins or abuse patterns)
+- nginx-http-auth (for repeated failed basic‑auth attempts)
+- nginx-botsearch (for bots probing for common paths)
+- recidive (Re‑bans IPs that were banned before (repeat offenders), usually with a much longer ban time)
