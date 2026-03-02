@@ -10,12 +10,10 @@ It runs 24/7 and behaves like a small server.
 
 All detailed documentations and photos are inside the docs folder:
 
-- docs/hardware.txt
-- docs/software.txt
-- docs/monitoring.txt
-- docs/backups.txt
-- docs/security.txt
-- docs/power-management.txt
+- docs/1_software.md
+- docs/2_hardware.md
+- docs/3_monitoring_&_PowerMngmnt.md
+- docs/4_security_&_backup.md
 
 The goal when i first started was simple:
 
