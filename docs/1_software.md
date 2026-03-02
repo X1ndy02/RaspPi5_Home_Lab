@@ -1,47 +1,77 @@
-Software and Services
+Software
 
-The system runs on Raspberry Pi OS with Docker.
+This system runs Debian 13 (trixie).
 
-Core Services
+All major services run inside Docker containers.
+Docker and Docker Compose v2 are used for orchestration.
 
-Nextcloud Stack
-- Nextcloud
-- MariaDB
-- Redis
-- Nginx reverse proxy
-- ClamAV antivirus scanning
+Containers are organised into custom bridge networks to separate
+application services from monitoring services.
 
-Monitoring Stack
-- Prometheus (collects system metrics)
-- Node Exporter (exposes system metrics)
-- Grafana (dashboard and visualization)
-- Grafana Image Renderer (used for reports)
 
-System-Level Services
+Nextcloud stack
 
-Docker Engine and Docker Compose
-Used to manage containers cleanly.
+The core service is Nextcloud, running in multiple containers:
 
-ZeroTier VPN
-Allows secure remote access from anywhere using VN.
+- Application container (Nextcloud + Apache)
+- Database container (MariaDB)
+- Cache container (Redis)
+- Reverse proxy container (Nginx)
+- Antivirus container (ClamAV)
 
-Fail2Ban
-Blocks repeated failed login attempts.
+All containers use an automatic restart policy.
 
-Restic
-Automated daily backups(snapshots) stored on the SATA SSD.
+If the application container crashes, Docker attempts a restart.
 
-SMART Monitoring
-Tracks disk health and reports issues.
 
-Custom Services
-- pi-monitor.service
-- rp2350-stats.service
-- UPS notification service
-- UPS safe shutdown service
 
-Email Alerts
-- msmtp is used to send system and status emails to private seprate email created solely fro notifications from Pi5.
+Storage
+Application data and database data are stored on persistent host-mounted directories.
+Monitoring services use separate persistent directories.
+ClamAV uses a dedicated Docker volume.
 
-The system is designed so that if something fails,
-I know immediately....
+
+Scheduled tasks
+Nextcloud background jobs run every 5 minutes via cron.
+Additional scheduled tasks include:
+- System monitoring checks
+- Backup execution
+- Disk health testing
+- Periodic system health summaries
+
+
+Backups
+Backups are handled using Restic.
+The system performs full filesystem backups with system path exclusions.
+Backups are:
+- Encrypted
+- Snapshot-based
+- Retention-limited (4 for now)
+- Scheduled via systemd timer
+
+Snapshots are stored on dedicated local storage (sata ssd)
+
+
+Monitoring
+Prometheus collects host metrics via node-exporter.
+Grafana provides dashboard visualisation.
+Alerting is handled by a custom monitoring script which triggers
+email notifications
+
+Monitoring covers:
+- Resource usage
+- Disk health
+- Service availability
+- Certificate expiration
+- Security-related events
+- Power events
+
+
+Security controls
+Fail2Ban is active with multiple jails enabled.
+SSH access is enabled.
+Container services are isolated via Docker networking.
+Reverse proxy handles TLS termination.
+
+
+Simply said this system is designed (for now) for experimentation and operational learning.
