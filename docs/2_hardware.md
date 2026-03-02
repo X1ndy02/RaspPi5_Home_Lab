@@ -1,33 +1,56 @@
-Hardware Setup
+Hardware
 
-Core System
+Core system
+
 - Raspberry Pi 5 Model B (16GB RAM)
-
-Cooler 
 - 52Pi Ultra Thin ICE Tower Cooler
 
-Primary Boot Drive
+
+Primary storage (boot drive)
+
 - Kingston 500GB NVMe SSD
-- Connected using Geekworm X1001 PCIe adapter
-- 50mm PCIe ribbon cable
-- Mounted with brass spacers for airflow
+- Connected via Geekworm X1001 PCIe to M.2 adapter
+- Linked using 50mm PCIe FFC cable
+- Mounted in elevated position using M2.5 hex brass spacers
 
-Secondary Storage
-- Geekworm X1100 SATA shield
-- Kingston 240GB SATA SSD (used for backups)
+The elevated mounting was done to improve airflow and prevents heat buildup
+around the NVMe module.
 
-Power Backup
-- Geekworm X1201 UPS shield
-- 2x Molicel M35A 18650 batteries (3500mAh)
+NVMe is used as the primary boot device instead of microSD
+for improved I/O performance and endurance.
 
-Monitoring Display
-- RP2350 1.47 inch display board
-- Connected via USB
-- Displays:
-  - IP addresses
-  - CPU usage
-  - RAM usage
-  - Temperature
-  - UPS battery level
-  - Running processes
-  - Throttling state
+
+Secondary storage
+- Geekworm X1100 2.5" SATA shield
+- Kingston 240GB SATA SSD
+The SATA SSD is dedicated to backup storage
+and any otehr ,,cold,, storage functions 
+
+
+Power backup
+- Geekworm X1201 2-Cell 5.1V 5A UPS shield
+- 2 × Molicel M35A 18650 batteries (3500mAh, 10A)
+The UPS provides short-term backup power during outages.
+
+It integrates with system services to:
+- Send power loss notifications
+- Trigger safe shutdown on low battery
+
+
+System monitoring display
+- RP2350 1.47" display development board (172×320, 262K color)
+- RP2350 dual-core, dual-architecture microcontroller
+- Connected via USB A
+
+The display outputs real-time system information including:
+- Current IP addresses
+- Running processes
+- CPU usage
+- RAM usage
+- Temperature
+- UPS battery status
+- Network ping
+- Throttling state
+
+This allows immediate physical inspection of system state
+without remote login
