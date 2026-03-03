@@ -1,20 +1,39 @@
-RaspPi5_Home_Lab
+# RaspPi5_Home_Lab
 
-This is my First atempt to create a home lab
+This is my first attempt at building a home lab from scratch.
 
-The goal was to build it from scratch so I can better understand how real systems actually run
-Not just installing apps on already prebuild product, but running services properly, monitoring them,
-securing them, backing them up, and fixing them when something breaks (on  amachine that ive build and designed moslty myslef)
+The goal was to understand how real systems actually operate — not just install applications on prebuilt platforms, but run services properly, monitor them, secure them, back them up, and troubleshoot failures on hardware I assembled and configured myself.
 
-It runs 24/7 and behaves like a small server.
+The system runs 24/7 and behaves like a small standalone server.
 
-All detailed documentations and photos are inside the docs folder:
+---
 
-- docs/1_software.md
-- docs/2_hardware.md
-- docs/3_monitoring_&_PowerMngmnt.md
-- docs/4_security_&_backup.md
+Documentation
 
-The goal when i first started was simple:
+Detailed technical documentation:
+- Software Overview  
+  https://github.com/X1ndy02/RaspPi5_Home_Lab/blob/main/docs/1_software.md
+- Hardware Overview  
+  https://github.com/X1ndy02/RaspPi5_Home_Lab/blob/main/docs/2_hardware.md
+- Monitoring & Power Management  
+  https://github.com/X1ndy02/RaspPi5_Home_Lab/blob/main/docs/3_monitoring_%26_PowerMngmnt.md
+- Security & Backup Strategy  
+  https://github.com/X1ndy02/RaspPi5_Home_Lab/blob/main/docs/4_security_%26_backup.md
 
-Build real operational experience, not just theory to drastically imporve knowladge (thought that its better then reading about it...)
+---
+
+## Validation & Testing
+
+- Test Scenarios  
+  https://github.com/X1ndy02/RaspPi5_Home_Lab/tree/main/tests
+
+- Improvement Tracker  
+  https://github.com/X1ndy02/RaspPi5_Home_Lab/blob/main/Improvements%20Required.md
+
+---
+
+Objective
+The original goal was simple:
+Build real operational experience, not just theoretical knowledge.
+
+Instead of only reading about infrastructure concepts, this lab is used to simulate failures, validate recovery behaviour, and iteratively improve reliability.
