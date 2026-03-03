@@ -1,4 +1,4 @@
-# RaspPi5_Home_Lab
+RaspPi5_Home_Lab
 
 This is my first attempt at building a home lab from scratch.
 
@@ -22,7 +22,7 @@ Detailed technical documentation:
 
 ---
 
-## Validation & Testing
+Validation & Testing
 
 - Test Scenarios  
   https://github.com/X1ndy02/RaspPi5_Home_Lab/tree/main/tests
