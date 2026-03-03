@@ -6,13 +6,13 @@ Shutdown threshold set to 20%
 Test Scenario
 AC power was manually disconnected pi is on UPS battery atm.
 
-Observed Behaviour
-- Power loss detected: Yes/No
-- Shutdown email sent: Yes/No
-- Battery percentage at shutdown:
-- Quick backup executed: Yes/No
-- Docker stopped cleanly: Yes/No
-- System powered off cleanly: Yes/No
+Observed Behaviour                           Results
+- Power loss detected: Yes/No                  Yes
+- Shutdown email sent: Yes/No                  Yes
+- Battery percentage at shutdown:             19.8%
+- Quick backup executed: Yes/No                Yes
+- Docker stopped cleanly: Yes/No                
+- System powered off cleanly: Yes/No           Yes
 
 Post-Restore Validation
 - System boot successful: Yes/No
